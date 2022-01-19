@@ -16,9 +16,7 @@
 
 ## Summary
 
-The React-PPP-HTML sample showcases the use of the [Property Pane Portal](https://www.npmjs.com/package/property-pane-portal) to display HTML controls in the SPFx Property Pane.
-
-![React_PPP_HTML_Sample](assets/Images/React_PPP_HTML_Sample.png "React_PPP_HTML_Sample")
+The React-PPP-MGT sample showcases the use of the [Property Pane Portal](https://www.npmjs.com/package/property-pane-portal) to display MGT controls in the SPFx Property Pane.
 
 ## Used SharePoint Framework Version
 
@@ -28,14 +26,14 @@ The React-PPP-HTML sample showcases the use of the [Property Pane Portal](https:
 
 Solution|Author(s)
 --------|---------
-React-PPP-HTML | [Christophe Humbert](https://github.com/PathToSharePoint)
+React-PPP-MGT | [Christophe Humbert](https://github.com/PathToSharePoint)
 
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-0.1.0|January 17, 2022|
+0.1.0|January 18, 2022|
 
 ## Disclaimer
 
@@ -53,15 +51,11 @@ Version|Date|Comments
 
 ## Features
 
-This sample showcases the use of HTML controls in the SPFx Property Pane, without the need to build SPFx custom controls.
+This sample showcases the use of MGT controls in the SPFx Property Pane, without the need to build SPFx custom controls.
 
 Implementations:
-- Color picker
-- Date pickers, with Start <= End
-- Range slider
-- Text box with URL validation
-- Cascading selects
-- Checkbox styled as toggle button
+- People Picker
+- Group Picker
 
 ## References
 
