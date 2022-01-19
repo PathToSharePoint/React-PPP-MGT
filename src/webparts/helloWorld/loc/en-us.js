@@ -1,7 +1,7 @@
 define([], function() {
   return {
     "PropertyPaneDescription": "Property Pane Portal Demo",
-    "BasicGroupName": "HTML Controls",
+    "BasicGroupName": "MGT Controls",
     "DescriptionFieldLabel": "Regular PropertyPaneTextField",
     "AppLocalEnvironmentSharePoint": "The app is running on your local environment as SharePoint web part",
     "AppLocalEnvironmentTeams": "The app is running on your local environment as Microsoft Teams app",

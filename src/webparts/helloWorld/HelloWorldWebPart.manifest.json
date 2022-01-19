@@ -18,15 +18,13 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "React-PPP-HTML" },
+    "title": { "default": "React-PPP-MGT" },
     "description": { "default": "Description" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "HelloWorld",
-      "fieldsetDatesInput": [null, null],
-      "fieldsetColorInput": "#008080",
-      "fieldsetCheckbox": true,
-      "fieldsetCascadingSelect": ["", ""]
+      "mgtPeoplePicker": "",
+      "mgtGroupPicker": ""
     }
   }]
 }

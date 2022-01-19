@@ -16,22 +16,14 @@ import { CustomPropertyPane } from './components/CustomPropertyPane';
 import { update } from '@microsoft/sp-lodash-subset';
 import { PropertyPaneHost } from 'property-pane-portal';
 
+import { Providers, SharePointProvider } from '@microsoft/mgt';
+
 export interface IHelloWorldWebPartProps {
-  northstarRadioGroup: any;
-  northstarSlider: any;
-  northstarRadioGroupColor: any;
-  northstarDatepicker: any;
-  northstarDropdownChild: any;
-  northstarRadioGroupParent: string;
-  fieldsetColorInput: string;
-  fieldsetDatesInput: string[];
-  fieldsetRangeInput: string;
-  fieldsetURLInput: string;
-  fieldsetCheckboxDarkLight: boolean;
-  fieldsetCheckbox: boolean;
-  fieldsetCascadingSelect: string[];
-  fieldsetBearToggle: boolean;
   description: string;
+  mgtPerson: string;
+  mgtPeoplePicker: string;
+  mgtGroupPicker: string;
+  mgtTeamsChannelPicker: string;
 }
 
 export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorldWebPartProps> {
@@ -42,7 +34,12 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
   protected onInit(): Promise<void> {
     this._environmentMessage = this._getEnvironmentMessage();
 
-    return super.onInit();
+    return super.onInit().then(_ => {
+  
+      // other init code may be present
+      Providers.globalProvider = new SharePointProvider(this.context);
+      
+    });
   }
 
   public render(): void {
@@ -132,19 +129,13 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                   label: strings.DescriptionFieldLabel
                 }),
                 PropertyPaneHorizontalRule(),
-                PropertyPaneHost('fieldsetColorInput', hostProperties),
+                PropertyPaneHost('mgtPerson', hostProperties),
                 PropertyPaneHorizontalRule(),
-                PropertyPaneHost('fieldsetDatesInput', hostProperties),
+                PropertyPaneHost('mgtPeoplePicker', hostProperties),
                 PropertyPaneHorizontalRule(),
-                PropertyPaneHost('fieldsetRangeInput', hostProperties),
+                PropertyPaneHost('mgtGroupPicker', hostProperties),
                 PropertyPaneHorizontalRule(),
-                PropertyPaneHost('fieldsetURLInput', hostProperties),
-                PropertyPaneHorizontalRule(),
-                PropertyPaneHost('fieldsetCascadingSelect', hostProperties),
-                PropertyPaneHorizontalRule(),
-                PropertyPaneHost('fieldsetCheckboxDarkLight', hostProperties),
-                PropertyPaneHorizontalRule(),
-                PropertyPaneHost('fieldsetCheckbox', hostProperties),
+                PropertyPaneHost('mgtTeamsChannelPicker', hostProperties),
                 PropertyPaneHorizontalRule()
               ]
             }
