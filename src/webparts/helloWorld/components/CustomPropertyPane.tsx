@@ -32,7 +32,7 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
             }}
             logoutCompleted={(e) => { console.log("logout completed"); }}
           />
-          <PeoplePicker
+          {/* <PeoplePicker
             selectionMode="single"
             selectionChanged={(e: any) => {
               console.log(e.detail);
@@ -51,7 +51,7 @@ export const CustomPropertyPane: React.FunctionComponent<ICustomPropertyPaneProp
               e.detail.forEach(dtl => users.push(dtl.userPrincipalName));
               props.updateWebPartProperty("mgtPeoplePicker", users[0]);
             }}
-          />
+          /> */}
           <PeoplePicker
             data-property="mgtGroupPicker"
             selectionMode="single"

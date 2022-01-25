@@ -17,6 +17,8 @@ import { update } from '@microsoft/sp-lodash-subset';
 import { PropertyPaneHost } from 'property-pane-portal';
 
 import { Providers, SharePointProvider } from '@microsoft/mgt';
+import { PropertyPaneWrap } from './components/PropertyPaneWrap';
+import { PeoplePicker } from '@microsoft/mgt-react';
 
 export interface IHelloWorldWebPartProps {
   description: string;
@@ -35,10 +37,10 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
     this._environmentMessage = this._getEnvironmentMessage();
 
     return super.onInit().then(_ => {
-  
+
       // other init code may be present
       Providers.globalProvider = new SharePointProvider(this.context);
-      
+
     });
   }
 
@@ -72,7 +74,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
 
     update(this.properties, property, () => value);
     this.render();
-  
+
   }
 
   private _getEnvironmentMessage(): string {
@@ -108,11 +110,18 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
 
   protected onPropertyPaneConfigurationStart() {
   }
-  
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 
     const hostProperties = {
       context: this.context
+    };
+
+    const onSelectionChanged = (e: any) => {
+      console.log(e.detail);
+      let users = [];
+      e.detail.forEach(dtl => users.push(dtl.userPrincipalName));
+      this.updateWebPartProperty("mgtPeoplePicker", users[0]);
     };
 
     return {
@@ -131,7 +140,13 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
                 PropertyPaneHorizontalRule(),
                 PropertyPaneHost('mgtPerson', hostProperties),
                 PropertyPaneHorizontalRule(),
-                PropertyPaneHost('mgtPeoplePicker', hostProperties),
+                PropertyPaneWrap('mgtPeoplePicker', {
+                  component: PeoplePicker,
+                  props: {
+                    selectionMode: "single",
+                    selectionChanged: onSelectionChanged
+                  }
+                }),
                 PropertyPaneHorizontalRule(),
                 PropertyPaneHost('mgtGroupPicker', hostProperties),
                 PropertyPaneHorizontalRule(),
